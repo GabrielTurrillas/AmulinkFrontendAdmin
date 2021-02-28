@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { fetchSesiones } from '../../redux/actions/terapiaActions';
+import { getListSesion } from '../../redux/actions/terapiaActions';
 /* Containers:
     PacienteDashBoard.js
 */
@@ -12,7 +12,7 @@ const SesionLista = () => {
     const sesiones = useSelector(state => state.terapiaReducer.sesiones)
 
     useEffect(() => {
-        dispatch(fetchSesiones(idPaciente));
+        dispatch(getListSesion(idPaciente));
     }, [dispatch, idPaciente]);
     
     if (!sesiones || !sesiones.length) {

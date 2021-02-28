@@ -9,7 +9,7 @@ import {
 } from './types';
 
 //COMPONENTES: PacienteLista
-export const fetchPacientes = () => async dispatch => {
+export const getListPaciente = () => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const fetchPacientes = () => async dispatch => {
         }
     };
 
-    axios.get("/api/paciente/admin/list", config)
+    axios.get("/api/paciente/listPaciente", config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTES_SUCCESS,
@@ -35,7 +35,7 @@ export const fetchPacientes = () => async dispatch => {
 
 
 //COMPONENTES: FormularioModificarPaciente, PacienteDetalle
-export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
+export const getRetrievePaciente = (idPaciente) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -43,8 +43,7 @@ export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    console.log('idPaciente:', idPaciente)
-    axios.get('/api/paciente/admin/'+idPaciente, config)
+    axios.get('/api/paciente/retrievePaciente/'+idPaciente, config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTE_DETALLE_SUCCESS,
@@ -61,7 +60,7 @@ export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
 
 
 //COMPONENTES: FormularioPaciente
-export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, tipoTerapia }) => async dispatch => {
+export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, tipoTerapia }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -74,7 +73,7 @@ export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellid
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, ocupacionProfecion,
         tipoTerapia });
-    axios.post('/api/paciente/admin/create', body, config)
+    axios.post('/api/paciente/createPaciente', body, config)
     .then(res =>{
         dispatch({
             type: ADD_PACIENTE_SUCCESS,
@@ -91,7 +90,7 @@ export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellid
 
 
 //COMPONENTES: FormularioModificarPaciente
-export const putPaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision }) => async dispatch => {
+export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +102,7 @@ export const putPaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellid
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, ocupacionProfecion,
         prevision });
-    axios.put(`api/paciente/admin/putPaciente/${idPaciente}`, body, config)
+    axios.put(`api/paciente/updatePaciente/${idPaciente}`, body, config)
     .then(res =>{
         dispatch({
             type: ADD_PACIENTE_SUCCESS,

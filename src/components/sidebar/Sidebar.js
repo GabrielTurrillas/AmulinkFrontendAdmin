@@ -8,7 +8,7 @@ import * as AiIcons from 'react-icons/ai';
 
 
 const Sidebar = () => {
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
     const [sidebar, setSidebar] = useState(false)
 
     const showSidebar = () => setSidebar(!sidebar)

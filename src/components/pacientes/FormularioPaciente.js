@@ -2,7 +2,7 @@ import React, { Fragment , useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
-import { postPacientes } from '../../redux/actions/pacientesActions';
+import { postCreatePaciente } from '../../redux/actions/pacientesActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 /* Containers:
@@ -13,7 +13,7 @@ const FormularioPaciente = () => {
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
     const onSubmit = (data) => {
-        dispatch(postPacientes(startDate, data));
+        dispatch(postCreatePaciente(startDate, data));
     };
     return(
         <Fragment>

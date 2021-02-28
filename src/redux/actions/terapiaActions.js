@@ -14,7 +14,7 @@ import {
 
 
 //COMPONENTES: SesionDetalle
-export const fetchSesion = (idSesion) => async dispatch => {
+export const getRetrieveSesion = (idSesion) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const fetchSesion = (idSesion) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get("/api/terapia/sesion/sesion_detalle/"+idSesion, config)
+    axios.get('/api/terapia/retrieveSesion/'+idSesion, config)
     .then(res => {
         dispatch({
             type: FETCH_SESION_SUCCESS,
@@ -39,7 +39,7 @@ export const fetchSesion = (idSesion) => async dispatch => {
 
 
 //COMPONENTES: SesionLista
-export const fetchSesiones = (idPaciente) => async dispatch => {
+export const getListSesion = (idPaciente) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const fetchSesiones = (idPaciente) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get("/api/terapia/sesion/"+idPaciente, config)
+    axios.get('/api/terapia/listSesion/'+idPaciente, config)
     .then(res => {
         dispatch({
             type: FETCH_SESIONES_SUCCESS,
@@ -65,7 +65,7 @@ export const fetchSesiones = (idPaciente) => async dispatch => {
 
 
 //COMPONENTES: PacienteDetalle, FormularioTerapia,
-export const fetchTerapia = (idPaciente) => async dispatch => {
+export const getRetrieveTerapia = (idPaciente) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get("/api/terapia/"+idPaciente, config)
+    axios.get('/api/terapia/retrieveTerapia/<int:pk>'+idPaciente, config)
     .then(res => {
         dispatch({
             type: FETCH_TERAPIA_SUCCESS,
@@ -91,7 +91,7 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
 
 
 //COMPONENTES: FormularioTerapia, 
-export const postTerapia = (body) => async dispatch => {
+export const postCreateTerapia = (body) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export const postTerapia = (body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.post("/api/terapia/admin/create_terapia", body, config)
+    axios.post("/api/terapia/createTerapia", body, config)
     .then(res => {
         dispatch({
             type: POST_TERAPIA_SUCCESS,
@@ -116,7 +116,7 @@ export const postTerapia = (body) => async dispatch => {
 
 
 //COMPONENTES: FormularioTerapia, 
-export const putTerapia = (id, body) => async dispatch => {
+export const putUpdateTerapia = (id, body) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export const putTerapia = (id, body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.put(`/api/terapia/admin/put_terapia/${id}`, body, config)
+    axios.put(`/api/terapia/updateTerapia/${id}`, body, config)
     .then(res => {
         dispatch({
             type: PUT_TERAPIA_SUCCESS,

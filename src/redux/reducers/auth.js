@@ -23,22 +23,20 @@ const initialState = {
     user: null
 };
 
-export default function(state = initialState, action) {
-    const { type, payload } = action;
-
-    switch(type) {
+const authReducer = (state=initialState, action) => {
+    switch(action.type) {
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true
             }
         case LOGIN_SUCCESS:
-            localStorage.setItem('access', payload.access);
+            localStorage.setItem('access', action.payload.access);
             return {
                 ...state,
                 isAuthenticated: true,
-                access: payload.access,
-                refresh: payload.refresh
+                access: action.payload.access,
+                refresh: action.payload.refresh
             }
         case SIGNUP_SUCCESS:
             return{
@@ -48,7 +46,7 @@ export default function(state = initialState, action) {
         case USER_LOADED_SUCCESS:
             return {
                 ...state,
-                user: payload
+                user: action.payload
             }
         case AUTHENTICATED_FAIL:
             return {
@@ -85,3 +83,4 @@ export default function(state = initialState, action) {
             return state
     }
 }
+export default authReducer;

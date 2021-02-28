@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchNumeroPacientesActivos } from '../../redux/actions/informesActions';
+import { getShowNumeroPacientesActivos } from '../../redux/actions/informesActions';
 
 const NumeroPacientesActivos = () => {
     const numeroPacientesActivos = useSelector(state => state.informesReducer.numeroPacientesActivos)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchNumeroPacientesActivos())
+        dispatch(getShowNumeroPacientesActivos())
     }, [dispatch]);
     return (
         <Fragment>

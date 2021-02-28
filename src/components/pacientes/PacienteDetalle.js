@@ -1,8 +1,8 @@
 import React,{ Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPacienteDetalle } from '../../redux/actions/pacientesActions';
-import { fetchTerapia } from '../../redux/actions/terapiaActions';
+import { getRetrievePaciente } from '../../redux/actions/pacientesActions';
+import { getRetrieveTerapia } from '../../redux/actions/terapiaActions';
 /* Containers:
     FichaPaciente.js
 */
@@ -11,15 +11,13 @@ const PacienteDetalle = () => {
     const dispatch = useDispatch();
     const paciente = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const terapia = useSelector(state => state.terapiaReducer.terapia);
-    console.log('paciente:',paciente);
-    console.log('terapia:',terapia);
 
     useEffect(() => {
-        dispatch(fetchPacienteDetalle(idPaciente));
+        dispatch(getRetrievePaciente(idPaciente));
     },[dispatch, idPaciente]);
 
     useEffect(() => {
-        dispatch(fetchTerapia(idPaciente));
+        dispatch(getRetrieveTerapia(idPaciente));
     },[dispatch, idPaciente]);
 
     

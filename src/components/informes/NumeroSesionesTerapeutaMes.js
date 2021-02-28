@@ -4,6 +4,7 @@ import { fetchNumeroSesionesTerapeutaMes } from '../../redux/actions/informesAct
 import { fetchPerfiles } from '../../redux/actions/terapeutaActions';
 import { useForm } from 'react-hook-form';
 
+//[COMPONENTE NO UTILIZADO AUN]
 const NumeroSesionesTerapeutaMes = () => {
     const numeroSesionesTerapeutaMes = useSelector(state => state.informesReducer.numeroSesionesTerapeutaMes)
     const perfiles = useSelector(state => state.terapeutaReducer.perfiles) 

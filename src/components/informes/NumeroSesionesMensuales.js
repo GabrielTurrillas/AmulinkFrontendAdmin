@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchNumeroSesionesMensuales } from '../../redux/actions/informesActions';
+import { getShowNumeroSesionesMensuales } from '../../redux/actions/informesActions';
 import { useForm } from 'react-hook-form';
 
 
@@ -11,7 +11,7 @@ const NumeroSesionesMensuales = () => {
     const dispatch = useDispatch();
     const onSubmit = (data) => {
         const { mes, anio } = data
-        dispatch(fetchNumeroSesionesMensuales(mes,anio))
+        dispatch(getShowNumeroSesionesMensuales(mes,anio))
     };
     return (
         <Fragment>

@@ -1,24 +1,22 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchNumeroSesionesAnuales } from '../../redux/actions/informesActions';
-import { fetchPerfiles } from '../../redux/actions/terapeutaActions';
+import { getShowNumeroSesionesAnualesView } from '../../redux/actions/informesActions';
+import { getListPerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 import { useForm } from 'react-hook-form';
 
 const TablaReporteComercial = () => {
     const numeroSesionesAnuales = useSelector(state => state.informesReducer.numeroSesionesAnuales)
     const perfiles = useSelector(state => state.terapeutaReducer.perfiles)
-    console.log('perfiles:',perfiles);
-    console.log('numeroSesionesAnuales:',numeroSesionesAnuales)
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm();
     useEffect(() => {
-        dispatch(fetchPerfiles());
+        dispatch(getListPerfilTerapeuta());
     }, [dispatch]);
 
     const onSubmit = ({año}) => {
         perfiles.forEach(perfil => {
-            dispatch(fetchNumeroSesionesAnuales('Fonasa', perfil.id, parseInt(año)))
-            dispatch(fetchNumeroSesionesAnuales('Isapre', perfil.id, parseInt(año)))
+            dispatch(getShowNumeroSesionesAnualesView('Fonasa', perfil.id, parseInt(año)))
+            dispatch(getShowNumeroSesionesAnualesView('Isapre', perfil.id, parseInt(año)))
         });
     };
     return (

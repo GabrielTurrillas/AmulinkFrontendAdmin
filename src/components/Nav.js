@@ -57,7 +57,7 @@ const Nav = ({ logout, isAuthenticated }) => {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.authReducer.isAuthenticated
 });
 
 export default connect(mapStateToProps, { logout } )(Nav);

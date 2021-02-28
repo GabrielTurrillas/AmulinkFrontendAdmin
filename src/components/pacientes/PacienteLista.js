@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPacientes } from '../../redux/actions/pacientesActions';
+import { getListPaciente } from '../../redux/actions/pacientesActions';
 import { Link } from 'react-router-dom';
 /* Containers:
     AgregarPacientes.js
@@ -11,7 +11,7 @@ const PacienteLista = () => {
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)
 
     useEffect(() => {
-        dispatch(fetchPacientes());
+        dispatch(getListPaciente());
     }, [dispatch])
     
     if (!pacientes || !pacientes.length) {

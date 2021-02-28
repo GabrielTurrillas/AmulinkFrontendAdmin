@@ -10,7 +10,7 @@ import {
 
 
 //COMPONENTES: NumeroSesionesMensuales
-export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
+export const getShowNumeroSesionesMensuales = (mes,anio) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get(`api/informes/numeroSesionesMensuales/${mes}/${anio}`, config)
+    axios.get(`api/informes/showNumeroSesionesMensuales/${mes}/${anio}`, config)
     .then(res => {
         dispatch({
             type: FETCH_NUMERO_SESIONES_MES_SUCCESS,
@@ -36,7 +36,7 @@ export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
 
 
 //COMPONENTES: NumeroPacientesActivos
-export const fetchNumeroPacientesActivos = () => async dispatch => {
+export const getShowNumeroPacientesActivos = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const fetchNumeroPacientesActivos = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get(`api/informes/numeroPacientesActivosView`, config)
+    axios.get(`api/informes/showNumeroPacientesActivos`, config)
     .then(res => {
         dispatch({
             type: FETCH_NUMERO_PACIENTES_ACTIVOS_SUCCESS,
@@ -61,7 +61,7 @@ export const fetchNumeroPacientesActivos = () => async dispatch => {
 
 
 //COMPONENTES: TablaReporteComercial
-export const fetchNumeroSesionesAnuales = (prevision, terapeuta, año) => async dispatch => {
+export const getShowNumeroSesionesAnualesView = (prevision, terapeuta, año) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const fetchNumeroSesionesAnuales = (prevision, terapeuta, año) => async 
             'Accept': 'application/json'
         }
     };
-    axios.get(`api/informes/numeroSesionesAnualesView/${prevision}/${terapeuta}/${año}`, config)
+    axios.get(`api/informes/showNumeroSesionesAnualesView/${prevision}/${terapeuta}/${año}`, config)
     .then(res => {
         dispatch({
             type:FETCH_NUMERO_SESIONES_ANUALES_SUCCESS,
@@ -82,6 +82,5 @@ export const fetchNumeroSesionesAnuales = (prevision, terapeuta, año) => async 
             payload: err.data
         });
     });
-    console.log(`api/informes/numeroSesionesAnualesView/${prevision}/${terapeuta}/${año}`)
 };
 

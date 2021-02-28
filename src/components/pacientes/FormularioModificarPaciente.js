@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import DatePicker from "react-datepicker";
-import { putPaciente, fetchPacienteDetalle } from '../../redux/actions/pacientesActions';
+import { putUpdatePaciente, getRetrievePaciente } from '../../redux/actions/pacientesActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 /* Containers:
@@ -20,12 +20,12 @@ const FormularioModificarPaciente = () => {
     const [startDate, setStartDate] = useState(new Date());
 
     useEffect(()=> {
-        dispatch(fetchPacienteDetalle(idPaciente));
+        dispatch(getRetrievePaciente(idPaciente));
         setStartDate(new Date(fechaNacimiento));
     },[dispatch, idPaciente, fechaNacimiento]);
 
     const onSubmit = (data) => {
-        dispatch(putPaciente(idPaciente, startDate ,data));
+        dispatch(putUpdatePaciente(idPaciente, startDate ,data));
     };
 
     return(

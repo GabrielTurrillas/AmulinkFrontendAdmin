@@ -2,8 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom'
-import { postTerapia, fetchTerapia, putTerapia } from '../../redux/actions/terapiaActions';
-import { fetchPerfiles } from '../../redux/actions/terapeutaActions';
+import { postCreateTerapia, getRetrieveTerapia, putUpdateTerapia } from '../../redux/actions/terapiaActions';
+import { getListPerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 /* Containers:
@@ -15,24 +15,21 @@ const FormularioTerapia = () => {
     const dispatch = useDispatch();
     const perfiles = useSelector(state => state.terapeutaReducer.perfiles)
     const idTerapia = useSelector(state => state.terapiaReducer.terapia.id)
-    console.log('idTerapia:', idTerapia);
     const onSubmit = (data) => {
         const { captacion, motivoConsulta, userAccount } = data
         const body = JSON.stringify({captacion, motivoConsulta, userAccount, paciente});
         if(!idTerapia || idTerapia.length) {
-            dispatch(postTerapia(body));
-            console.log('postTerapia')
+            dispatch(postCreateTerapia(body));
         }
         else{
-            dispatch(putTerapia(idTerapia, body));
-            console.log('putTerapia')
+            dispatch(putUpdateTerapia(idTerapia, body));
         }
     };
     useEffect(() => {
-        dispatch(fetchPerfiles())
+        dispatch(getListPerfilTerapeuta())
     }, [dispatch])
     useEffect(() => {
-        dispatch(fetchTerapia(paciente));
+        dispatch(getRetrieveTerapia(paciente));
     },[dispatch, paciente]);
     return (
         <Fragment>
