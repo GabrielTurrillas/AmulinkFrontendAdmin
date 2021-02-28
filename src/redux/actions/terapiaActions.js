@@ -2,8 +2,6 @@ import axios from '../../axios';
 import {
     FETCH_SESIONES_SUCCESS,
     FETCH_SESIONES_FAILURE,
-    ADD_SESION_SUCCESS,
-    ADD_SESION_FAILURE,
     FETCH_TERAPIA_SUCCESS,
     FETCH_TERAPIA_FAILURE,
     FETCH_SESION_SUCCESS,
@@ -15,7 +13,7 @@ import {
 } from './types';
 
 
-
+//COMPONENTES: SesionDetalle
 export const fetchSesion = (idSesion) => async dispatch => {
     const config = {
         headers:{
@@ -39,6 +37,8 @@ export const fetchSesion = (idSesion) => async dispatch => {
     })
 };
 
+
+//COMPONENTES: SesionLista
 export const fetchSesiones = (idPaciente) => async dispatch => {
     const config = {
         headers:{
@@ -63,6 +63,8 @@ export const fetchSesiones = (idPaciente) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: PacienteDetalle, FormularioTerapia,
 export const fetchTerapia = (idPaciente) => async dispatch => {
     const config = {
         headers:{
@@ -87,6 +89,8 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: FormularioTerapia, 
 export const postTerapia = (body) => async dispatch => {
     const config = {
         headers: {
@@ -110,6 +114,8 @@ export const postTerapia = (body) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: FormularioTerapia, 
 export const putTerapia = (id, body) => async dispatch => {
     const config = {
         headers: {
@@ -133,25 +139,4 @@ export const putTerapia = (id, body) => async dispatch => {
     });
 };
 
-export const agregarSesiones = (body, idPaciente) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : `JWT ${localStorage.getItem('access')}`,
-            'Accept': 'application/json'
-        }
-    };
-    axios.post('/api/terapia/sesion/'+idPaciente, body, config)
-    .then(res => {
-        dispatch({
-            type: ADD_SESION_SUCCESS,
-            payload: res.data
-        });
-    })
-    .catch(err => {
-        dispatch({
-            type: ADD_SESION_FAILURE,
-            payload: err.data
-        });
-    });
-};
+

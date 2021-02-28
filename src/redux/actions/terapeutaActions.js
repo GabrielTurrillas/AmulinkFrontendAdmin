@@ -8,6 +8,8 @@ import {
     PUT_PERFIL_FAILURE
 } from './types';
 
+
+//COMPONENTES:
 export const fetchPerfil = () => async dispatch => {
     const config = {
         headers:{
@@ -32,6 +34,8 @@ export const fetchPerfil = () => async dispatch => {
     });
 };
 
+
+//COMPONENTES: TablaReporteComercial, FormularioTerapia
 export const fetchPerfiles = () => async dispatch => {
     const config = {
         headers:{
@@ -56,6 +60,8 @@ export const fetchPerfiles = () => async dispatch => {
     });
 };
 
+
+//COMPONENTES:
 export const putPerfil = (body) => async dispatch => {
     const config = {
         headers:{

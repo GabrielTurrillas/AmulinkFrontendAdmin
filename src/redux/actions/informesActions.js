@@ -8,6 +8,8 @@ import {
     FETCH_NUMERO_SESIONES_ANUALES_FAILURE,
 } from './types';
 
+
+//COMPONENTES: NumeroSesionesMensuales
 export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
     const config = {
         headers:{
@@ -32,6 +34,8 @@ export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: NumeroPacientesActivos
 export const fetchNumeroPacientesActivos = () => async dispatch => {
     const config = {
         headers:{
@@ -55,6 +59,8 @@ export const fetchNumeroPacientesActivos = () => async dispatch => {
     });
 };
 
+
+//COMPONENTES: TablaReporteComercial
 export const fetchNumeroSesionesAnuales = (prevision, terapeuta, año) => async dispatch => {
     const config = {
         headers:{

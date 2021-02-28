@@ -8,7 +8,7 @@ import {
     FETCH_PACIENTE_DETALLE_FAILURE
 } from './types';
 
-
+//COMPONENTES: PacienteLista
 export const fetchPacientes = () => async dispatch => {
     const config = {
         headers: {
@@ -33,6 +33,8 @@ export const fetchPacientes = () => async dispatch => {
     });
 };
 
+
+//COMPONENTES: FormularioModificarPaciente, PacienteDetalle
 export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
     const config = {
         headers: {
@@ -57,6 +59,8 @@ export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: FormularioPaciente
 export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, tipoTerapia }) => async dispatch => {
     const config = {
         headers: {
@@ -85,6 +89,8 @@ export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellid
     }); 
 };
 
+
+//COMPONENTES: FormularioModificarPaciente
 export const putPaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision }) => async dispatch => {
     const config = {
         headers: {
