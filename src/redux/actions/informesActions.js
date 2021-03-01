@@ -69,7 +69,7 @@ export const getShowNumeroSesionesAnualesView = (prevision, terapeuta, año) => 
             'Accept': 'application/json'
         }
     };
-    axios.get(`api/informes/showNumeroSesionesAnualesView/${prevision}/${terapeuta}/${año}`, config)
+    axios.get(`api/informes/showNumeroSesionesAnuales/${prevision}/${terapeuta}/${año}`, config)
     .then(res => {
         dispatch({
             type:FETCH_NUMERO_SESIONES_ANUALES_SUCCESS,
