@@ -73,7 +73,7 @@ export const getRetrieveTerapia = (idPaciente) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('/api/terapia/retrieveTerapia/<int:pk>'+idPaciente, config)
+    axios.get('/api/terapia/retrieveTerapia/'+idPaciente, config)
     .then(res => {
         dispatch({
             type: FETCH_TERAPIA_SUCCESS,
