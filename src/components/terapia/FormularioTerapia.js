@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { postCreateTerapia, getRetrieveTerapia, putUpdateTerapia } from '../../redux/actions/terapiaActions';
 import { getListPerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 
@@ -10,11 +10,16 @@ import "react-datepicker/dist/react-datepicker.css";
     DerivacionPacientes.js
  */
 const FormularioTerapia = () => {
+    const histroy = useHistory()
     const {register, handleSubmit, errors} = useForm();
     const { id:paciente } = useParams();
     const dispatch = useDispatch();
     const perfiles = useSelector(state => state.terapeutaReducer.perfiles)
     const idTerapia = useSelector(state => state.terapiaReducer.terapia.id)
+    const routeChange = () => {
+        let path = `/pacientes`;
+        histroy.push(path);
+    }
     const onSubmit = (data) => {
         const { captacion, motivoConsulta, userAccount } = data
         const body = JSON.stringify({captacion, motivoConsulta, userAccount, paciente});
@@ -24,6 +29,7 @@ const FormularioTerapia = () => {
         else{
             dispatch(putUpdateTerapia(idTerapia, body));
         }
+        routeChange();
     };
     useEffect(() => {
         dispatch(getListPerfilTerapeuta())

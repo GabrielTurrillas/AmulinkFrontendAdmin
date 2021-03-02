@@ -1,7 +1,7 @@
 import React, { Fragment , useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import { putUpdatePaciente, getRetrievePaciente } from '../../redux/actions/pacientesActions';
 
@@ -10,22 +10,28 @@ import "react-datepicker/dist/react-datepicker.css";
     ModificarPaciente.js
 */
 const FormularioModificarPaciente = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
     const pacienteDetalle = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
         comunaResidencia,ocupacionProfecion,prevision,} = pacienteDetalle || {}
     const {register, handleSubmit, errors} = useForm();
-    const dispatch = useDispatch();
     const {id:idPaciente} = useParams()
     const [startDate, setStartDate] = useState(new Date());
 
+    const routeChange = () => {
+        let path = `/pacientes/ficha_paciente/${idPaciente}`;
+        history.push(path);
+    }
     useEffect(()=> {
         dispatch(getRetrievePaciente(idPaciente));
         setStartDate(new Date(fechaNacimiento));
     },[dispatch, idPaciente, fechaNacimiento]);
 
     const onSubmit = (data) => {
-        dispatch(putUpdatePaciente(idPaciente, startDate ,data));
+        dispatch(putUpdatePaciente(idPaciente, startDate, data));
+        routeChange();
     };
 
     return(

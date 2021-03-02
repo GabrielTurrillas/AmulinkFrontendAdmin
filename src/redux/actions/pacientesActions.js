@@ -5,7 +5,9 @@ import {
     ADD_PACIENTE_SUCCESS,
     ADD_PACIENTE_FAILURE,
     FETCH_PACIENTE_DETALLE_SUCCESS,
-    FETCH_PACIENTE_DETALLE_FAILURE
+    FETCH_PACIENTE_DETALLE_FAILURE,
+    UPDATE_PACIENTE_SUCCESS,
+    UPDATE_PACIENTE_FAILURE,
 } from './types';
 
 //COMPONENTES: PacienteLista
@@ -105,13 +107,13 @@ export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, a
     axios.put(`api/paciente/updatePaciente/${idPaciente}`, body, config)
     .then(res =>{
         dispatch({
-            type: ADD_PACIENTE_SUCCESS,
+            type: UPDATE_PACIENTE_SUCCESS,
             payload: res.data
         })
     })
     .catch (err=>{
         dispatch({
-            type: ADD_PACIENTE_FAILURE,
+            type: UPDATE_PACIENTE_FAILURE,
             errors: err.data
         });
     }); 

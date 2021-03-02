@@ -4,7 +4,9 @@ import {
     ADD_PACIENTE_SUCCESS,
     ADD_PACIENTE_FAILURE,
     FETCH_PACIENTE_DETALLE_SUCCESS,
-    FETCH_PACIENTE_DETALLE_FAILURE 
+    FETCH_PACIENTE_DETALLE_FAILURE,
+    UPDATE_PACIENTE_SUCCESS,
+    UPDATE_PACIENTE_FAILURE,
 } from '../actions/types';
 
 
@@ -60,6 +62,16 @@ const pacientesReducer = (state=initialState, action) => {
                 pacienteDetalle: action.payload
             }
         case FETCH_PACIENTE_DETALLE_FAILURE:
+            return {
+                ...state,
+                errors: action.payload,
+            }
+        case UPDATE_PACIENTE_SUCCESS:
+            return {
+                ...state,
+                pacienteDetalle: action.payload,
+            }
+        case UPDATE_PACIENTE_FAILURE:
             return {
                 ...state,
                 errors: action.payload,
