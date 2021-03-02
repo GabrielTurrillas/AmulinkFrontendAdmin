@@ -161,12 +161,12 @@ const FormularioPaciente = () => {
                     </div>
                 </div>
 
-                {/* Tipo de Terapia */} 
+                {/* Prevision */} 
                 <div className='row'>
                     <div className='col-6 mt-4'>
-                        <h5>Tipo de Terapia</h5>
+                        <h5>Prevision</h5>
                         <div className="form-group">
-                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='tipoTerapia'>
+                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision'>
                                 <option value='Fonasa'>Fonasa</option>
                                 <option value='Isapre'>Isapre</option>
                                 <option value='Bajo Costo'>Bajo Costo</option>

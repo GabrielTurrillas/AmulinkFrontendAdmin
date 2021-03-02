@@ -60,7 +60,7 @@ export const getRetrievePaciente = (idPaciente) => async dispatch => {
 
 
 //COMPONENTES: FormularioPaciente
-export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, tipoTerapia }) => async dispatch => {
+export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, ap
     const body = JSON.stringify({ rut, nombre, apellidoPaterno,
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, ocupacionProfecion,
-        tipoTerapia });
+        prevision });
     axios.post('/api/paciente/createPaciente', body, config)
     .then(res =>{
         dispatch({
