@@ -11,6 +11,8 @@ import {
     POST_TERAPIA_FAILURE,
     PUT_TERAPIA_SUCCESS,
     PUT_TERAPIA_FAILURE,
+    LIST_TERAPIA_FAILURE,
+    LIST_TERAPIA_SUCCESS,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +20,9 @@ const initialState = {
     terapia: {
         id:''
     },
+    terapias: [
+        {}
+    ],
     sesion:[],
     errors:'',
 }
@@ -87,6 +92,17 @@ const terapiaReducer = (state=initialState, action) => {
                 errors: '',
             }
         case PUT_TERAPIA_FAILURE:
+            return {
+                ...state,
+                errors: action.payload
+            }
+        case LIST_TERAPIA_SUCCESS:
+            return {
+                ...state,
+                terapias: action.payload,
+                errors: '',
+            }
+        case LIST_TERAPIA_FAILURE:
             return {
                 ...state,
                 errors: action.payload

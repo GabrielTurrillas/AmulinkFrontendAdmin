@@ -10,6 +10,8 @@ import {
     POST_TERAPIA_FAILURE,
     PUT_TERAPIA_SUCCESS,
     PUT_TERAPIA_FAILURE,
+    LIST_TERAPIA_FAILURE,
+    LIST_TERAPIA_SUCCESS,
 } from './types';
 
 
@@ -63,6 +65,31 @@ export const getListSesion = (idPaciente) => async dispatch => {
     });
 };
 
+
+//COMPONENTES: PacienteDetalle, FormularioTerapia,
+export const getListTerapia = () => async dispatch => {
+    const config = {
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    axios.get('/api/terapia/listTerapia', config)
+    .then(res => {
+        dispatch({
+            type: LIST_TERAPIA_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: LIST_TERAPIA_FAILURE,
+            payload: err.data
+        })
+        console.log(err)
+    });
+};
 
 //COMPONENTES: PacienteDetalle, FormularioTerapia,
 export const getRetrieveTerapia = (idPaciente) => async dispatch => {

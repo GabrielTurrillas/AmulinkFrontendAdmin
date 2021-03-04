@@ -20,7 +20,21 @@ const initialState = {
         fechaNacimiento:''
     },
     errors:'',
-    perfiles: []
+    perfiles: [
+        {
+            id:"",
+            userAccount:"",
+            rut:"",
+            nombre:"",
+            apellidoPaterno:"",
+            apellidoMaterno:"",
+            telefono:"",
+            email:"",
+            genero:"",
+            fechaNacimiento:"",
+            tipoCuenta:"",
+        }
+    ]
 };
 
 const terapeutaReducer = (state=initialState, action) => {

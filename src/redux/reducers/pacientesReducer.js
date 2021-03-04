@@ -11,22 +11,7 @@ import {
 
 
 const initialState = {
-    pacientes: {
-        rut:'',
-        nombre:'',
-        apellidoPaterno:'',
-        apellidoMaterno:'',
-        telefono:'',
-        email:'',
-        fechaNacimiento:'',
-        genero:'',
-        direccion:'',
-        comunaResidencia:'',
-        ocupacionProfecion:'',
-        prevision:'',
-        tipoTerapia:'',
-        userAccount:''
-    },
+    pacientes: [],
     pacienteDetalle: {},
     errors: '',
 };
