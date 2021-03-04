@@ -5,7 +5,8 @@ import store from './redux/store';
 
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
-import AgregarPacientes from './containers/pacientes/AgregarPacientes';
+import PacienteListaContainer from './containers/pacientes/PacienteListaContainer';
+import AgregarPacienteContainer from './containers/pacientes/AgregarPacienteContainer';
 import Derivacion from './containers/pacientes/Derivacion';
 import Layout from './hocs/Layout';
 import FichaPaciente from './containers/pacientes/FichaPaciente';
@@ -23,7 +24,8 @@ const App = () => (
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
-                    <Route exact path='/pacientes' component={AgregarPacientes} />
+                    <Route exact path='/listaPacientes' component={PacienteListaContainer} />
+                    <Route exact path='/agregarPacientes' component={AgregarPacienteContainer} />
                     <Route exact path='/pacientes/:id' component={PacienteDashBoard} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
                     <Route exact path='/pacientes/ficha_sesion/:id' component={FichaSesion} />

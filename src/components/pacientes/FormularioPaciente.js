@@ -1,4 +1,5 @@
 import React, { Fragment , useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
@@ -9,11 +10,17 @@ import "react-datepicker/dist/react-datepicker.css";
     AgregarPacientes.js
 */
 const FormularioPaciente = () => {
+    const history = useHistory()
     const [startDate, setStartDate] = useState(new Date()); 
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
+    const routeChange = () => {
+        let path = `/listaPacientes`;
+        history.push(path);
+    }
     const onSubmit = (data) => {
         dispatch(postCreatePaciente(startDate, data));
+        routeChange();
     };
     return(
         <Fragment>

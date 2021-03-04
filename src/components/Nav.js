@@ -18,7 +18,7 @@ const Nav = ({ logout, isAuthenticated }) => {
     const authLinks = () => (
         <Fragment>
             <li className='nav-item'>
-                <Link className='nav-link' to='/pacientes'>Pacientes</Link>
+                <Link className='nav-link' to='/listaPacientes'>Pacientes</Link>
             </li>
             <li className='nav-item'>
                 <Link className='nav-link' to='/informes/area_comercial'>Area Comercial</Link>
