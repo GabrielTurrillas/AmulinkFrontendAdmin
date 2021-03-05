@@ -15,7 +15,7 @@ const FormularioModificarPaciente = () => {
     const pacienteDetalle = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
-        comunaResidencia,ocupacionProfecion,prevision, captacion, motivoConsulta, pagoDerivacion} = pacienteDetalle || {}
+        comunaResidencia,prevision, captacion, motivoConsulta, pagoDerivacion} = pacienteDetalle || {}
     const {register, handleSubmit, errors} = useForm();
     const {id:idPaciente} = useParams()
     const [startDate, setStartDate] = useState(new Date());
@@ -176,19 +176,6 @@ const FormularioModificarPaciente = () => {
                             })}
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
-                    </div>
-                    <div className='form-group col-6'> 
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="ocupacionProfecion" 
-                            placeholder="Ocupacion o Profecion"
-                            defaultValue={ocupacionProfecion}
-                            ref={register({
-                                required:'Campo "Ocupacion o Profecion" obligatorio',
-                            })}
-                        />
-                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
                     </div>
                 </div>
 

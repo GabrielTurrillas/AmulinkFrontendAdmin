@@ -140,7 +140,7 @@ const FormularioPaciente = () => {
                     </div>
                 </div>
 
-                {/* Comuna de Residencia - Ocupacion Profecion */}
+                {/* Comuna de Residencia */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -153,18 +153,6 @@ const FormularioPaciente = () => {
                             })}
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
-                    </div>
-                    <div className='form-group col-6'> 
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="ocupacionProfecion" 
-                            placeholder="Ocupacion o Profecion"
-                            ref={register({
-                                required:'Campo "Ocupacion o Profecion" obligatorio',
-                            })}
-                        />
-                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
                     </div>
                 </div>
 

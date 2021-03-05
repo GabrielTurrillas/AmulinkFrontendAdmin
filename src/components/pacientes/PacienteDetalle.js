@@ -16,7 +16,7 @@ const PacienteDetalle = () => {
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno,
         telefono, email, fechaNacimiento, genero, direccion,
-        comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta, pagoDerivacion } = paciente
+        comunaResidencia, prevision, captacion, motivoConsulta, pagoDerivacion } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento); 
 
     return (
@@ -62,9 +62,6 @@ const PacienteDetalle = () => {
                 </div>
             </div>
             <div className='row mt-3'>
-                <div className='col'>
-                    <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
-                </div>
                 <div className='col'>
                     <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
                 </div>
