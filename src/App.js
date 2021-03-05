@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
 import PacienteListaContainer from './containers/pacientes/PacienteListaContainer';
+import PacienteListaTodosContainer from './containers/pacientes/PacienteListaTodosContainer';
 import AgregarPacienteContainer from './containers/pacientes/AgregarPacienteContainer';
 import Derivacion from './containers/pacientes/Derivacion';
 import Layout from './hocs/Layout';
@@ -25,6 +25,7 @@ const App = () => (
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/listaPacientes' component={PacienteListaContainer} />
+                    <Route exact path='/listaPacientesTodos' component={PacienteListaTodosContainer} />
                     <Route exact path='/agregarPacientes' component={AgregarPacienteContainer} />
                     <Route exact path='/pacientes/:id' component={PacienteDashBoard} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
