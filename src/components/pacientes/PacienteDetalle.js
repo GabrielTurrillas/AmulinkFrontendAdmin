@@ -16,8 +16,8 @@ const PacienteDetalle = () => {
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno,
         telefono, email, fechaNacimiento, genero, direccion,
-        comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta } = paciente
-    const fechaNacimientoDate = new Date(fechaNacimiento);
+        comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta, pagoDerivacion } = paciente
+    const fechaNacimientoDate = new Date(fechaNacimiento); 
 
     return (
         <Fragment>
@@ -75,6 +75,11 @@ const PacienteDetalle = () => {
                 </div>
                 <div className='col'>
                     <p className='font-weight-light'>Captacion: { captacion }</p>
+                </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Pago de Derivacion: { pagoDerivacion ? 'Si' : 'No' }</p>
                 </div>
             </div>
         </Fragment>

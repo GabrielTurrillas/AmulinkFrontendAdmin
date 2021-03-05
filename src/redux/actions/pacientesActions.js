@@ -92,7 +92,7 @@ export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, ap
 
 
 //COMPONENTES: FormularioModificarPaciente
-export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta }) => async dispatch => {
+export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta, pagoDerivacion }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, a
     const body = JSON.stringify({ rut, nombre, apellidoPaterno,
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, ocupacionProfecion,
-        prevision, captacion, motivoConsulta });
+        prevision, captacion, motivoConsulta, pagoDerivacion });
     axios.put(`api/paciente/updatePaciente/${idPaciente}`, body, config)
     .then(res =>{
         dispatch({

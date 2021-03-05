@@ -15,7 +15,7 @@ const FormularioModificarPaciente = () => {
     const pacienteDetalle = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
-        comunaResidencia,ocupacionProfecion,prevision, captacion, motivoConsulta} = pacienteDetalle || {}
+        comunaResidencia,ocupacionProfecion,prevision, captacion, motivoConsulta, pagoDerivacion} = pacienteDetalle || {}
     const {register, handleSubmit, errors} = useForm();
     const {id:idPaciente} = useParams()
     const [startDate, setStartDate] = useState(new Date());
@@ -223,8 +223,8 @@ const FormularioModificarPaciente = () => {
                 </div>
 
                 {/* Tipo de Terapia */} 
-                <div className='row'>
-                    <div className='col-6 mt-4'>
+                <div className='row mt-4'>
+                    <div className='col-6'>
                         <h5>Tipo de Terapia</h5>
                         <div className="form-group">
                             <select className="form-control" ref={register} name='prevision' defaultValue={prevision}>
@@ -233,6 +233,18 @@ const FormularioModificarPaciente = () => {
                                 <option value='Bajo Costo'>Bajo Costo</option>
                             </select>
                         </div>
+                    </div>
+                    <div className='col-6'>
+                        <h5>Pago de Derivacion</h5>
+                        <input
+                            type="checkbox"
+                            className='btn-check'
+                            id="pagoDerivacion"
+                            name="pagoDerivacion"
+                            defaultChecked={pagoDerivacion} 
+                            ref={register({
+                            })}
+                        /> 
                     </div>
                 </div>
                 

@@ -43,27 +43,29 @@ const PacienteLista = () => {
 
     return (
         <Fragment>
-            <div className='card mt-4'>
+            <div className='card mt-4 container-fluid'>
                 <table className="table table-hover">
                     <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Profecional</th>
-                            <th scope="col">Prevision/Programa</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Derivar</th>
+                        <tr className='d-flex'>
+                            <th className="col-1">Id</th>
+                            <th className="col-2">Nombre</th>
+                            <th className="col-2">Profecional</th>
+                            <th className="col-2">Prevision/Programa</th>
+                            <th className="col-2">Telefono</th>
+                            <th className="col-2">Pago Derivacion</th>
+                            <th className="col-1">Derivar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {pacientes.map(({ id, nombre, apellidoPaterno, telefono, prevision }) =>
-                            <tr key={id} className='clickable-row'>
-                                <th scope="row">{id}</th>
-                                <td><Link to={"pacientes/"+id}>{nombre} {apellidoPaterno}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{terapeutaDePaciente(terapias, id, terapeutas)}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{prevision}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{telefono}</Link></td>
-                                <td><Link className='btn btn-primary btn-sm' to={'/derivacion/'+id} role='button'>Derivar</Link></td>
+                        {pacientes.map(({ id, nombre, apellidoPaterno, telefono, prevision, pagoDerivacion }) =>
+                            <tr key={id} className='clickable-row d-flex'>
+                                <th className='col-1' scope="row">{id}</th>
+                                <td className='col-2'><Link to={"pacientes/"+id}>{nombre} {apellidoPaterno}</Link></td>
+                                <td className='col-2'><Link to={"pacientes/"+id}>{terapeutaDePaciente(terapias, id, terapeutas)}</Link></td>
+                                <td className='col-2'><Link to={"pacientes/"+id}>{prevision}</Link></td>
+                                <td className='col-2'><Link to={"pacientes/"+id}>{telefono}</Link></td>
+                                <td className='col-2'><Link to={"pacientes/"+id}>{pagoDerivacion ? 'Si' : 'No'}</Link></td>
+                                <td className='col-1'><Link className='btn btn-primary btn-sm' to={'/derivacion/'+id} role='button'>Derivar</Link></td>
                             </tr>
                         )}
                     </tbody>
