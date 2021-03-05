@@ -2,7 +2,6 @@ import React,{ Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRetrievePaciente } from '../../redux/actions/pacientesActions';
-import { getRetrieveTerapia } from '../../redux/actions/terapiaActions';
 /* Containers:
     FichaPaciente.js
 */
@@ -10,20 +9,14 @@ const PacienteDetalle = () => {
     const { id:idPaciente } = useParams();
     const dispatch = useDispatch();
     const paciente = useSelector(state => state.pacientesReducer.pacienteDetalle)
-    const terapia = useSelector(state => state.terapiaReducer.terapia);
 
     useEffect(() => {
         dispatch(getRetrievePaciente(idPaciente));
     },[dispatch, idPaciente]);
-
-    useEffect(() => {
-        dispatch(getRetrieveTerapia(idPaciente));
-    },[dispatch, idPaciente]);
-
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno,
         telefono, email, fechaNacimiento, genero, direccion,
-        comunaResidencia, ocupacionProfecion, prevision } = paciente
+        comunaResidencia, ocupacionProfecion, prevision, captacion, motivoConsulta } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento);
 
     return (
@@ -78,10 +71,10 @@ const PacienteDetalle = () => {
             </div>
             <div className='row mt-3'>
                 <div className='col'>
-                    <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
+                    <p className='font-weight-light'>Motivo de Consulta: { motivoConsulta }</p>
                 </div>
                 <div className='col'>
-                    <p className='font-weight-light'>Captacion: { terapia.captacion }</p>
+                    <p className='font-weight-light'>Captacion: { captacion }</p>
                 </div>
             </div>
         </Fragment>

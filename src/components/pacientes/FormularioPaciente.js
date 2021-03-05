@@ -168,22 +168,36 @@ const FormularioPaciente = () => {
                     </div>
                 </div>
 
-                {/* Prevision */} 
+                {/* Captacion - Motivo Consulta */} 
                 <div className='row'>
-                    <div className='col-6 mt-4'>
-                        <h5>Prevision</h5>
-                        <div className="form-group">
-                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision'>
-                                <option value='Fonasa'>Fonasa</option>
-                                <option value='Isapre'>Isapre</option>
-                                <option value='Bajo Costo'>Bajo Costo</option>
-                            </select>
-                        </div>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="captacion" 
+                            placeholder="Captacion"
+                            ref={register({
+                                required:'Campo "Comuna de residencia" obligatorio',
+                            })}
+                        />
+                        {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
+                    </div>
+                    <div className='form-group col-6'> 
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="motivoConsulta" 
+                            placeholder="Motivo de Consulta"
+                            ref={register({
+                                required:'Campo "Ocupacion o Profecion" obligatorio',
+                            })}
+                        />
+                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
                     </div>
                 </div>
-                
+
                 {/* Fecha de Nacimiento - Esta Activo */}
-                <div className='row'>
+                <div className='row mt-4'>
                     <div className='col-6'>
                         <div className='row'>
                             <div className='form-group col-12'>
@@ -198,6 +212,21 @@ const FormularioPaciente = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Prevision */} 
+                <div className='row'>
+                    <div className='col-6 mt-4'>
+                        <h5>Prevision</h5>
+                        <div className="form-group">
+                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision'>
+                                <option value='Fonasa'>Fonasa</option>
+                                <option value='Isapre'>Isapre</option>
+                                <option value='Bajo Costo'>Bajo Costo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
                 <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
             </form>
         </Fragment>

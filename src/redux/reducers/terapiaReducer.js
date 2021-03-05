@@ -18,7 +18,7 @@ import {
 const initialState = {
     sesiones: [],
     terapia: {
-        id:''
+        
     },
     terapias: [
         {}

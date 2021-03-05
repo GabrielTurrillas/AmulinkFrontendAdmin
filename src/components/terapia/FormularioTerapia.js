@@ -11,18 +11,20 @@ import "react-datepicker/dist/react-datepicker.css";
  */
 const FormularioTerapia = () => {
     const histroy = useHistory()
-    const {register, handleSubmit, errors} = useForm();
+    const {register, handleSubmit} = useForm();
     const { id:paciente } = useParams();
     const dispatch = useDispatch();
     const perfiles = useSelector(state => state.terapeutaReducer.perfiles)
     const idTerapia = useSelector(state => state.terapiaReducer.terapia.id)
+
     const routeChange = () => {
         let path = `/pacientes`;
         histroy.push(path);
-    }
+    };
+
     const onSubmit = (data) => {
-        const { captacion, motivoConsulta, userAccount } = data
-        const body = JSON.stringify({captacion, motivoConsulta, userAccount, paciente});
+        const { userAccount } = data
+        const body = JSON.stringify({ userAccount, paciente});
         if(!idTerapia || idTerapia.length) {
             dispatch(postCreateTerapia(body));
         }
@@ -31,59 +33,18 @@ const FormularioTerapia = () => {
         }
         routeChange();
     };
+
     useEffect(() => {
         dispatch(getListPerfilTerapeuta())
-    }, [dispatch])
+    }, [dispatch]);
+
     useEffect(() => {
         dispatch(getRetrieveTerapia(paciente));
     },[dispatch, paciente]);
+
     return (
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/* Captacion - Motivo Consulta */} 
-                <div className='row'>
-                    <div className='form-group col-6'>
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="captacion" 
-                            placeholder="Captacion"
-                            ref={register({
-                                required:'Campo "Comuna de residencia" obligatorio',
-                            })}
-                        />
-                        {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
-                    </div>
-                    <div className='form-group col-6'> 
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="motivoConsulta" 
-                            placeholder="Motivo de Consulta"
-                            ref={register({
-                                required:'Campo "Ocupacion o Profecion" obligatorio',
-                            })}
-                        />
-                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
-                    </div>
-                </div>
-
-                {/* Fecha Inicio de Terapia */}
-{/*                 <div className='row'>
-                    <div className='form-group col-6'>
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="fechaInicio" 
-                            placeholder="Fecha de Inicio"
-                            ref={register({
-                                required:'Campo "Comuna de residencia" obligatorio',
-                            })}
-                        />
-                        {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
-                    </div>
-                </div> */}
-
                 {/* Derivar a */}
                 <div className='row'>
                     <div className='col-6 mt-4'>

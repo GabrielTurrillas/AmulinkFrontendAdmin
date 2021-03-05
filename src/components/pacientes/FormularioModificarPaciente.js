@@ -15,7 +15,7 @@ const FormularioModificarPaciente = () => {
     const pacienteDetalle = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
-        comunaResidencia,ocupacionProfecion,prevision,} = pacienteDetalle || {}
+        comunaResidencia,ocupacionProfecion,prevision, captacion, motivoConsulta} = pacienteDetalle || {}
     const {register, handleSubmit, errors} = useForm();
     const {id:idPaciente} = useParams()
     const [startDate, setStartDate] = useState(new Date());
@@ -30,6 +30,7 @@ const FormularioModificarPaciente = () => {
     },[dispatch, idPaciente, fechaNacimiento]);
 
     const onSubmit = (data) => {
+        console.log(data)
         dispatch(putUpdatePaciente(idPaciente, startDate, data));
         routeChange();
     };
@@ -183,6 +184,36 @@ const FormularioModificarPaciente = () => {
                             name="ocupacionProfecion" 
                             placeholder="Ocupacion o Profecion"
                             defaultValue={ocupacionProfecion}
+                            ref={register({
+                                required:'Campo "Ocupacion o Profecion" obligatorio',
+                            })}
+                        />
+                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
+                    </div>
+                </div>
+
+                {/* Captacion - Motivo Consulta */} 
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="captacion" 
+                            placeholder="Captacion"
+                            defaultValue={captacion}
+                            ref={register({
+                                required:'Campo "Comuna de residencia" obligatorio',
+                            })}
+                        />
+                        {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
+                    </div>
+                    <div className='form-group col-6'> 
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="motivoConsulta" 
+                            placeholder="Motivo de Consulta"
+                            defaultValue={motivoConsulta}
                             ref={register({
                                 required:'Campo "Ocupacion o Profecion" obligatorio',
                             })}

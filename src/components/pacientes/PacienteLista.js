@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListPaciente } from '../../redux/actions/pacientesActions';
 import { getListTerapia } from '../../redux/actions/terapiaActions';
@@ -14,55 +14,42 @@ const PacienteLista = () => {
     const terapias = useSelector(state => state.terapiaReducer.terapias)
     const terapeutas = useSelector(state => state.terapeutaReducer.perfiles)
 
-    
     useEffect(() => {
         dispatch(getListPaciente());
         dispatch(getListTerapia());
         dispatch(getListPerfilTerapeuta());
     }, [dispatch]);
     
-    if (!pacientes || !pacientes.length) {
+    if (!pacientes || !pacientes.length || !terapias || !terapias.length || !terapeutas || !terapeutas.length) {
         return (
             <p>
                 Spiner
             </p>
         ) 
-    }
-    if (!terapias || !terapias.length) {
-        return (
-            <p>
-                Spiner
-            </p>
-        ) 
-    }
-    if (!terapeutas || !terapeutas.length) {
-        return (
-            <p>
-                Spiner
-            </p>
-        ) 
-    }
+    };
         
     const terapeutaDePaciente = (terapias, idPaciente, terapeutas) => {
         const terapia = terapias.find(terapia => terapia.paciente === idPaciente)
         if (!terapia) {
             return 'No Derivado'
         }
-        const terapeuta = terapeutas.find (terapeuta => terapeuta.id === terapia.userAccount)
+        const terapeuta = terapeutas.find(terapeuta => terapeuta.id === terapia.userAccount)
+        if (!terapeuta){
+            return 'undefined'
+        }
         const nombreTerapeuta = terapeuta.nombre + " " + terapeuta.apellidoPaterno
         return nombreTerapeuta
     }    
 
     return (
         <Fragment>
-            {console.log('terapias',terapias)}
             <div className='card mt-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Terapeuta</th>
+                            <th scope="col">Profecional</th>
                             <th scope="col">Prevision/Programa</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Derivar</th>
