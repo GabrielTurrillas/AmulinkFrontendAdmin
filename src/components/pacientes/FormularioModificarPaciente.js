@@ -30,7 +30,7 @@ const FormularioModificarPaciente = () => {
     },[dispatch, idPaciente, fechaNacimiento]);
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log('data', data)
         dispatch(putUpdatePaciente(idPaciente, startDate, data));
         routeChange();
     };
@@ -189,7 +189,7 @@ const FormularioModificarPaciente = () => {
                             placeholder="Captacion"
                             defaultValue={captacion}
                             ref={register({
-                                required:'Campo "Comuna de residencia" obligatorio',
+                                required:'Campo "captacion" obligatorio',
                             })}
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
@@ -202,7 +202,7 @@ const FormularioModificarPaciente = () => {
                             placeholder="Motivo de Consulta"
                             defaultValue={motivoConsulta}
                             ref={register({
-                                required:'Campo "Ocupacion o Profecion" obligatorio',
+                                required:'Campo "Motivo de Consulta" obligatorio',
                             })}
                         />
                         {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}

@@ -18,18 +18,6 @@ const SesionDetalle = () => {
     const fechaSesionDate = new Date(fechaSesion)
     const fechaPagoDate = new Date(fechaPago)
 
-    var pagoString
-    if(pago){
-        pagoString = 'Pago Realizado'
-    } else {
-        pagoString = 'No a Pagado'
-    }
-    var asistioString
-    if(asistio){
-        asistioString = 'Asistio'
-    } else {
-        asistioString = 'No Asistio'
-    }
 
     return (
         <Fragment>
@@ -43,7 +31,7 @@ const SesionDetalle = () => {
             </div>
             <div className='row ml-3 mt-3'>
                 <div className='col'>
-                    <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
+                    <p className='font-weight-light'>Pago: {pago ? 'Si' : 'No'}</p>
                 </div>
                 <div className='col'>
                     <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDate()}/{fechaPagoDate.getMonth()+1}/{fechaPagoDate.getFullYear()}</p>
@@ -51,10 +39,10 @@ const SesionDetalle = () => {
             </div>
             <div className='row ml-3 mt-3'>
                 <div className='col'>
-                    <p className='font-weight-light'>Pago: {pagoString}</p>
+                    <p className='font-weight-light'>Asistencia: {asistio ? 'Si' : 'No'}</p>
                 </div>
                 <div className='col'>
-                    <p className='font-weight-light'>Asistencia: {asistioString}</p>
+                    <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                 </div>
             </div>
             <div className='row ml-3 mt-3'>
