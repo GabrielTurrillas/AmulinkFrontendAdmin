@@ -100,10 +100,11 @@ export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, a
             'Accept': 'application/json'
         }
     };
-    const body = JSON.stringify({ rut, nombre, apellidoPaterno,
+    const body = JSON.stringify({rut, nombre, apellidoPaterno,
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, prevision,
         captacion, motivoConsulta, pagoDerivacion });
+    console.log('body', body)
     axios.put(`api/paciente/updatePaciente/${idPaciente}`, body, config)
     .then(res =>{
         dispatch({

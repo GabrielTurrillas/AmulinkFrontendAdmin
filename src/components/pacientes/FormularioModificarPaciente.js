@@ -12,13 +12,13 @@ import "react-datepicker/dist/react-datepicker.css";
 const FormularioModificarPaciente = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const {id:idPaciente} = useParams()
     const pacienteDetalle = useSelector(state => state.pacientesReducer.pacienteDetalle)
+    const {register, handleSubmit, errors} = useForm();
+    const [startDate, setStartDate] = useState(new Date());
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
         comunaResidencia,prevision, captacion, motivoConsulta, pagoDerivacion} = pacienteDetalle || {}
-    const {register, handleSubmit, errors} = useForm();
-    const {id:idPaciente} = useParams()
-    const [startDate, setStartDate] = useState(new Date());
 
     const routeChange = () => {
         let path = `/pacientes/ficha_paciente/${idPaciente}`;
@@ -162,7 +162,7 @@ const FormularioModificarPaciente = () => {
                     </div>
                 </div>
 
-                {/* Comuna de Residencia - Ocupacion Profecion */}
+                {/* Comuna de Residencia */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -205,7 +205,7 @@ const FormularioModificarPaciente = () => {
                                 required:'Campo "Motivo de Consulta" obligatorio',
                             })}
                         />
-                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
+                        {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
                     </div>
                 </div>
 

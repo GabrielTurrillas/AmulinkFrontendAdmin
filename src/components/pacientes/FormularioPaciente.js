@@ -177,10 +177,10 @@ const FormularioPaciente = () => {
                             name="motivoConsulta" 
                             placeholder="Motivo de Consulta"
                             ref={register({
-                                required:'Campo "Ocupacion o Profecion" obligatorio',
+                                required:'Campo "Motivo de Consulta" obligatorio',
                             })}
                         />
-                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
+                        {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
                     </div>
                 </div>
 
