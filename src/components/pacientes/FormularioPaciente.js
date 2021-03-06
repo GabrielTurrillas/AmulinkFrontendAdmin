@@ -118,18 +118,6 @@ const FormularioPaciente = () => {
                         <input
                             className='form-control' 
                             type="text"
-                            name="genero" 
-                            placeholder="Genero"
-                            ref={register({
-                                required:'Campo "Genero" obligatorio',
-                            })}
-                        /> 
-                    {errors.genero && <p>{errors.genero.message}</p>}
-                    </div>
-                    <div className='form-group col-6'>
-                        <input
-                            className='form-control' 
-                            type="text"
                             name="direccion" 
                             placeholder="Direccion"
                             ref={register({
@@ -137,6 +125,18 @@ const FormularioPaciente = () => {
                             })}
                         /> 
                         {errors.direccion && <p>{errors.direccion.message}</p>}
+                    </div>
+                    <div className='form-group col-6'> 
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="motivoConsulta" 
+                            placeholder="Motivo de Consulta"
+                            ref={register({
+                                required:'Campo "Motivo de Consulta" obligatorio',
+                            })}
+                        />
+                        {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
                     </div>
                 </div>
 
@@ -151,8 +151,11 @@ const FormularioPaciente = () => {
                             ref={register({
                                 required:'Campo "Comuna de residencia" obligatorio',
                             })}
-                        />
+                            />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
+                    </div>
+                    <div className='col'>
+                        <h5 className='mt-4'>Prevision</h5>
                     </div>
                 </div>
 
@@ -170,41 +173,7 @@ const FormularioPaciente = () => {
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
                     </div>
-                    <div className='form-group col-6'> 
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="motivoConsulta" 
-                            placeholder="Motivo de Consulta"
-                            ref={register({
-                                required:'Campo "Motivo de Consulta" obligatorio',
-                            })}
-                        />
-                        {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
-                    </div>
-                </div>
-
-                {/* Fecha de Nacimiento - Esta Activo */}
-                <div className='row mt-4'>
                     <div className='col-6'>
-                        <div className='row'>
-                            <div className='form-group col-12'>
-                                <label htmlFor="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
-                                <DatePicker
-                                    className='form-control' 
-                                    id='fechaNacimiento' 
-                                    selected={startDate} 
-                                    onChange={date => setStartDate(date)} 
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Prevision */} 
-                <div className='row'>
-                    <div className='col-6 mt-4'>
-                        <h5>Prevision</h5>
                         <div className="form-group">
                             <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision'>
                                 <option value='Fonasa'>Fonasa</option>
@@ -214,7 +183,71 @@ const FormularioPaciente = () => {
                         </div>
                     </div>
                 </div>
-                
+
+                {/* Fecha de Nacimiento - Esta Activo */}
+                <div className='row'>
+                    <div className='col form-group'>
+                        <h5>Fecha de Nacimiento</h5>
+                        <div className='form-group'>
+                            <DatePicker
+                                className='form-control' 
+                                id='fechaNacimiento' 
+                                selected={startDate} 
+                                onChange={date => setStartDate(date)} 
+                            />
+                        </div>
+                    </div>
+                    <div className='col-1'>
+                        <h5>Genero</h5>
+                    </div>
+                    <div className='col-5'>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input"
+                                type="radio"
+                                name="genero" 
+                                id="femenino"
+                                value='Femenino'
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="femenino">
+                                Femenino
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input" 
+                                type="radio" 
+                                name="genero" 
+                                id="masculino"
+                                value='Masculino'
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="masculino">
+                                Masculino
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input" 
+                                type="radio" 
+                                name="genero" 
+                                id="otro"
+                                value='Otro'
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="otro">
+                                Otro
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
             </form>
         </Fragment>
