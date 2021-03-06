@@ -45,9 +45,6 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                 </div>
             </div>
-            <div className='row ml-3 mt-3'>
-                <button className='mb-3 btn btn-primary mt-4'>Modificar</button>
-            </div>
         </Fragment>
     );
 }
