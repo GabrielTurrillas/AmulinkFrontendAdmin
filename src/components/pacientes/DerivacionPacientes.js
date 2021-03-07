@@ -9,10 +9,8 @@ import FormularioTerapia from '../terapia/FormularioTerapia';
 const DerivacionPacientes = () => {
     return (
         <Fragment>
-            <h5>Paciente</h5>
+            <h1 className='display-4 mb-4'>Derivacion de Paciente</h1>
             <PacienteDetalle />
-            <div className='mt-4'></div>
-            <h5>Informacion de Terapia</h5>
             <FormularioTerapia />
         </Fragment>
     );
