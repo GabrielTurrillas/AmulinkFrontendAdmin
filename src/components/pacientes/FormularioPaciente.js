@@ -25,8 +25,6 @@ const FormularioPaciente = () => {
     return(
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>
-
-                {/* Rut - Nombre */}
                 <div className='row'> 
                     <div className='form-group col-6'>
                         <input
@@ -54,8 +52,6 @@ const FormularioPaciente = () => {
                         {errors.nombre && <p>{errors.nombre.message}</p>}
                     </div>
                 </div>
-
-                {/* Apellido Paterno - Apellido Materno */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -83,8 +79,6 @@ const FormularioPaciente = () => {
                         {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>}
                     </div>
                 </div>
-
-                {/* Telefono - Email */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -111,8 +105,6 @@ const FormularioPaciente = () => {
                         {errors.email && <p>{errors.email.message}</p>}
                     </div>
                 </div>
-
-                {/* Genero - Direccion */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -139,8 +131,6 @@ const FormularioPaciente = () => {
                         {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
                     </div>
                 </div>
-
-                {/* Comuna de Residencia */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -158,8 +148,6 @@ const FormularioPaciente = () => {
                         <h5 className='mt-4'>Prevision</h5>
                     </div>
                 </div>
-
-                {/* Captacion - Motivo Consulta */} 
                 <div className='row'>
                     <div className='form-group col-6'>
                         <input
@@ -183,8 +171,6 @@ const FormularioPaciente = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Fecha de Nacimiento - Esta Activo */}
                 <div className='row'>
                     <div className='col form-group'>
                         <h5>Fecha de Nacimiento</h5>
