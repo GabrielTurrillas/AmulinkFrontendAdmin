@@ -65,13 +65,13 @@ const PacienteDetalle = () => {
                 <div className='col'>
                     <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
                 </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Captacion: { captacion }</p>
+                </div>
             </div>
             <div className='row mt-3'>
                 <div className='col'>
                     <p className='font-weight-light'>Motivo de Consulta: { motivoConsulta }</p>
-                </div>
-                <div className='col'>
-                    <p className='font-weight-light'>Captacion: { captacion }</p>
                 </div>
             </div>
             <div className='row mt-3'>
