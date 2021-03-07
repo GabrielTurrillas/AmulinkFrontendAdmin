@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 
-const PacientesPagination = ({ pacientes, loading, terapias, terapeutas }) => {
+const Pacientes = ({ pacientes, loading, terapias, terapeutas }) => {
     if(loading) {
         return <h2>Loading...</h2>; 
     }
@@ -38,4 +38,4 @@ const PacientesPagination = ({ pacientes, loading, terapias, terapeutas }) => {
     )
 };
 
-export default PacientesPagination;
+export default Pacientes;

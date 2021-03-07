@@ -59,7 +59,12 @@ const PacienteLista = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <Pacientes pacientes={currentPacientes} loading={loading} terapias={terapias} terapeutas={terapeutas} />
+                            <Pacientes
+                                pacientes={currentPacientes}
+                                loading={loading} 
+                                terapias={terapias} 
+                                terapeutas={terapeutas}
+                            />
                         </tbody>
                     </table>
                 </div>
