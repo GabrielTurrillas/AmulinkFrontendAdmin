@@ -18,12 +18,13 @@ const FormularioModificarPaciente = () => {
     const [startDate, setStartDate] = useState(new Date());
     const {rut,nombre,apellidoPaterno,apellidoMaterno,
         telefono,email,fechaNacimiento,genero,direccion,
-        comunaResidencia,prevision, captacion, motivoConsulta, pagoDerivacion} = pacienteDetalle || {}
+        comunaResidencia,prevision, captacion, motivoConsulta, pagoDerivacion, valorSesion} = pacienteDetalle || {}
 
     const routeChange = () => {
         let path = `/pacientes/ficha_paciente/${idPaciente}`;
         history.push(path);
-    }
+    };
+
     useEffect(()=> {
         dispatch(getRetrievePaciente(idPaciente));
         setStartDate(new Date(fechaNacimiento));
@@ -168,8 +169,6 @@ const FormularioModificarPaciente = () => {
                         {errors.motivoConsulta && <p>{errors.motivoConsulta.message}</p>}
                     </div>
                 </div>
-
-                {/* Comuna de Residencia */}
                 <div className='row'>
                     <div className='form-group col-6'>
                         <h5>Comuna de Residencia</h5>
@@ -185,20 +184,6 @@ const FormularioModificarPaciente = () => {
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
                     </div>
-                    <div className='col-6'>
-                        <h5>Prevision</h5>
-                        <div className="form-group">
-                            <select className="form-control" ref={register} name='prevision' defaultValue={prevision}>
-                                <option value='Fonasa'>Fonasa</option>
-                                <option value='Isapre'>Isapre</option>
-                                <option value='Bajo Costo'>Bajo Costo</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Captacion - Motivo Consulta */} 
-                <div className='row'>
                     <div className='form-group col-6'>
                         <h5>Captacion</h5>
                         <input
@@ -213,6 +198,10 @@ const FormularioModificarPaciente = () => {
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
                     </div>
+                </div>
+
+                {/* Captacion - Motivo Consulta */} 
+                <div className='row'>
                     <div className='form-group col'>
                         <h5>Fecha de Naciemiento</h5>
                         <DatePicker
@@ -290,6 +279,30 @@ const FormularioModificarPaciente = () => {
                     </div>
                 </div>
                 <div className='row mt-4'>
+                    <div className='col-6'>
+                        <h5>Prevision</h5>
+                        <div className="form-group">
+                            <select className="form-control" ref={register} name='prevision' defaultValue={prevision}>
+                                <option value='Fonasa'>Fonasa</option>
+                                <option value='Isapre'>Isapre</option>
+                                <option value='Bajo Costo'>Bajo Costo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='form-group col-6'>
+                        <h5>Valor de la Sesion</h5>
+                        <input
+                            className='form-control'
+                            type="text"
+                            name="valorSesion" 
+                            placeholder="Valor de la Sesion"
+                            defaultValue={valorSesion}
+                            ref={register({
+                                required: 'Campo "Valor de la Sesion" obligatorio',
+                            })}
+                        /> 
+                        {errors.valorSesion && <p>{errors.valorSesion.message}</p>}
+                    </div>
                 </div>
                 <div className='row'>
                     <div className='col mt-4'>

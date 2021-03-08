@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 */
 const FormularioPaciente = () => {
     const history = useHistory()
+    const [sesionValor, setSesionValor] = useState("");
     const [startDate, setStartDate] = useState(new Date()); 
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
@@ -22,6 +23,19 @@ const FormularioPaciente = () => {
         dispatch(postCreatePaciente(startDate, data));
         routeChange();
     };
+
+    const changeValorSesion = e => {
+        if (e.target.value === 'Fonasa' ) {
+            setSesionValor("15000")
+        }
+        if (e.target.value === 'Isapre' ) {
+            setSesionValor("30000")
+        }
+        if (e.target.value === 'Bajo Costo' ) {
+            setSesionValor("5000")
+        }
+    };
+
     return(
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -144,11 +158,6 @@ const FormularioPaciente = () => {
                             />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
                     </div>
-                    <div className='col'>
-                        <h5 className='mt-4'>Prevision</h5>
-                    </div>
-                </div>
-                <div className='row'>
                     <div className='form-group col-6'>
                         <input
                             className='form-control' 
@@ -161,17 +170,6 @@ const FormularioPaciente = () => {
                         />
                         {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
                     </div>
-                    <div className='col-6'>
-                        <div className="form-group">
-                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision'>
-                                <option value='Fonasa'>Fonasa</option>
-                                <option value='Isapre'>Isapre</option>
-                                <option value='Bajo Costo'>Bajo Costo</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div className='row'>
                     <div className='col form-group'>
                         <h5>Fecha de Nacimiento</h5>
                         <div className='form-group'>
@@ -233,6 +231,34 @@ const FormularioPaciente = () => {
                             </label>
                         </div>
                     </div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        <h5>Prevision</h5>
+                        <div className="form-group">
+                            <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision' onChange={changeValorSesion}>
+                                <option selected>Prevision/Programa</option>
+                                <option value='Fonasa'>Fonasa</option>
+                                <option value='Isapre'>Isapre</option>
+                                <option value='Bajo Costo'>Bajo Costo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='form-group col'>
+                        <h5>Valor de la Sesion</h5>
+                        <input
+                            className='form-control'
+                            type="text"
+                            name="valorSesion" 
+                            placeholder="Valor de la Sesion"
+                            defaultValue={sesionValor}
+                            ref={register({
+                                required: 'Campo "Valor de la Sesion" obligatorio',
+                            })}
+                        /> 
+                        {errors.valorSesion && <p>{errors.valorSesion.message}</p>}
+                    </div>
+
                 </div>
                 <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
             </form>

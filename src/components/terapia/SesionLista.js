@@ -23,7 +23,7 @@ const SesionLista = () => {
 
     return (
        <Fragment>
-            <div className='card ml-4 mr-4 mb-4'>
+            <div className='card mr-4 mb-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>

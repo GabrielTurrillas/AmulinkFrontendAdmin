@@ -62,7 +62,7 @@ export const getRetrievePaciente = (idPaciente) => async dispatch => {
 
 
 //COMPONENTES: FormularioPaciente
-export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, prevision, captacion, motivoConsulta }) => async dispatch => {
+export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, prevision, captacion, motivoConsulta, valorSesion }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, ap
     const body = JSON.stringify({ rut, nombre, apellidoPaterno,
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia,
-        prevision, captacion, motivoConsulta });
+        prevision, captacion, motivoConsulta, valorSesion });
     axios.post('/api/paciente/createPaciente', body, config)
     .then(res =>{
         dispatch({
@@ -92,7 +92,7 @@ export const postCreatePaciente = (startDate ,{ rut, nombre, apellidoPaterno, ap
 
 
 //COMPONENTES: FormularioModificarPaciente
-export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, prevision, captacion, motivoConsulta, pagoDerivacion }) => async dispatch => {
+export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, prevision, captacion, motivoConsulta, pagoDerivacion, valorSesion }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export const putUpdatePaciente = (idPaciente , fechaNacimiento, { rut, nombre, a
     const body = JSON.stringify({rut, nombre, apellidoPaterno,
         apellidoMaterno, telefono, email, fechaNacimiento,
         genero, direccion, comunaResidencia, prevision,
-        captacion, motivoConsulta, pagoDerivacion });
+        captacion, motivoConsulta, pagoDerivacion, valorSesion });
     console.log('body', body)
     axios.put(`api/paciente/updatePaciente/${idPaciente}`, body, config)
     .then(res =>{
