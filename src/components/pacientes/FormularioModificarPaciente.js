@@ -286,6 +286,7 @@ const FormularioModificarPaciente = () => {
                                 <option value='Fonasa'>Fonasa</option>
                                 <option value='Isapre'>Isapre</option>
                                 <option value='Bajo Costo'>Bajo Costo</option>
+                                <option value='Pasantia'>Pasantia</option>
                             </select>
                         </div>
                     </div>

@@ -32,7 +32,10 @@ const FormularioPaciente = () => {
             setSesionValor("30000")
         }
         if (e.target.value === 'Bajo Costo' ) {
-            setSesionValor("5000")
+            setSesionValor("13000")
+        }
+        if (e.target.value === 'Pasantia' ) {
+            setSesionValor("8000")
         }
     };
 
