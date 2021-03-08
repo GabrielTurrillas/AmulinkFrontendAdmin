@@ -14,7 +14,7 @@ const SesionDetalle = () => {
         dispatch(getRetrieveSesion(idSesion));
     }, [dispatch, idSesion])
     
-    const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago } = sesion
+    const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago, emisionBoleta } = sesion
     const fechaSesionDate = new Date(fechaSesion)
     const fechaPagoDate = new Date(fechaPago)
 
@@ -42,6 +42,11 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Asistencia: {asistio ? 'Si' : 'No'}</p>
                 </div>
                 <div className='col'>
+                    <p className='font-weight-light'>Emision de Boleta: {emisionBoleta ? 'Si' : 'No' }</p>
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col-12'>
                     <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                 </div>
             </div>
