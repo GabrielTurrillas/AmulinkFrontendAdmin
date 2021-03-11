@@ -64,7 +64,7 @@ const PacienteDetalle = () => {
                 </div>
                 <div className='row mt-3'>
                     <div className='col'>
-                        <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
+                        <p className='font-weight-light'>Prevision o Programa: { prevision }</p>
                     </div>
                     <div className='col'>
                         <p className='font-weight-light'>Captacion: { captacion }</p>

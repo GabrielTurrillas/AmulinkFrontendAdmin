@@ -237,7 +237,7 @@ const FormularioPaciente = () => {
                 </div>
                 <div className='row'>
                     <div className='col'>
-                        <h5>Prevision</h5>
+                        <h5>Prevision o Programa</h5>
                         <div className="form-group">
                             <select className="form-control" id="exampleFormControlSelect1" ref={register} name='prevision' onChange={changeValorSesion}>
                                 <option selected>Prevision/Programa</option>

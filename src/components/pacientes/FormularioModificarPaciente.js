@@ -280,7 +280,7 @@ const FormularioModificarPaciente = () => {
                 </div>
                 <div className='row mt-4'>
                     <div className='col-6'>
-                        <h5>Prevision</h5>
+                        <h5>Prevision o Programa</h5>
                         <div className="form-group">
                             <select className="form-control" ref={register} name='prevision' defaultValue={prevision}>
                                 <option value='Fonasa'>Fonasa</option>

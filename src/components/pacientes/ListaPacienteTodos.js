@@ -53,7 +53,7 @@ const PacienteListaTodos = () => {
                                 <th className="col-1">Id</th>
                                 <th className="col-2">Nombre</th>
                                 <th className="col-2">Profecional</th>
-                                <th className="col-2">Prevision</th>
+                                <th className="col-2">Prevision o Programa</th>
                                 <th className="col-2">Telefono</th>
                                 <th className="col-2">Pago Derivacion</th>
                                 <th className="col-1">Derivar</th>
