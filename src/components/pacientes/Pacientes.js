@@ -19,6 +19,15 @@ const Pacientes = ({ pacientes, loading, terapias, terapeutas }) => {
         return nombreTerapeuta
     }
 
+    const btnDerivar = (terapias, idPaciente) => {
+        const terapia = terapias.find(terapia => terapia.paciente === idPaciente)
+        console.log(terapia)
+        if (!terapia) {
+            return 'btn btn-primary btn-sm'
+        }
+        return 'btn btn-secondary btn-sm'
+    }
+
     return ( 
         <Fragment>
             <ul className='list-group mb-4'>
@@ -30,7 +39,7 @@ const Pacientes = ({ pacientes, loading, terapias, terapeutas }) => {
                         <td className='col-2'><Link to={"pacientes/"+id}>{prevision}</Link></td>
                         <td className='col-2'><Link to={"pacientes/"+id}>{telefono}</Link></td>
                         <td className='col-2'><Link to={"pacientes/"+id}>{pagoDerivacion ? 'Si' : 'No'}</Link></td>
-                        <td className='col-1'><Link className='btn btn-primary btn-sm' to={'/derivacion/'+id} role='button'>Derivar</Link></td>
+                        <td className='col-1'><Link className={btnDerivar(terapias, id)} to={'/derivacion/'+id} role='button'>Derivar</Link></td>
                     </tr>
                 )}
             </ul>
